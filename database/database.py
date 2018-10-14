@@ -2,38 +2,25 @@ import psycopg2
 from config import config
 
 class database:
-    """A class for accessing PostgreSQL servers"""
+    # TODO: Change this to the appropriate names
+    insert_sql = """INSERT INTO vendors(vendor_name)
+             VALUES(%s) RETURNING vendor_id;"""
+    update_sql = """ UPDATE vendors
+                SET vendor_name = %s
+                WHERE vendor_id = %s"""
+    delete_sql = """DELETE FROM parts WHERE part_id = %s"""
+
+    """A class for accessing PostgreSQL servers."""
     def __init__(self, ini_file = 'database.ini'):
         self.params = config(filename=ini_file)
+        self.conn = None
 
     # TODO: Complete class functions.
     def connect(self):
-        """ Connect to the PostgreSQL database server """
-        conn = None
-        try:
-            # read connection parameters
-            params = config(filename='test.ini')
+        """Connect to the PostgreSQL database server. Consider this pricate"""
+        self.conn = psycopg2.connect(**params)
 
-            # connect to the PostgreSQL server
-            print('Connecting to the PostgreSQL database...')
-            conn = psycopg2.connect(**params)
-
-            # create a cursor
-            cur = conn.cursor()
-
-            # execute a statement
-            print('PostgreSQL database version:')
-            cur.execute('SELECT version()')
-
-            # display the PostgreSQL database server version
-            db_version = cur.fetchone()
-            print(db_version)
-
-            # close the communication with the PostgreSQL
-            cur.close()
-        except (Exception, psycopg2.DatabaseError) as error:
-            print(error)
-        finally:
-            if conn is not None:
-                conn.close()
-                print('Database connection closed.')
+    def close(self):
+        """Close the connection to the PostgreSQL server. Consider this
+        pricate"""
+        self.conn.close()
