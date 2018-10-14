@@ -17,10 +17,10 @@ class database:
 
     # TODO: Complete class functions.
     def connect(self):
-        """Connect to the PostgreSQL database server. Consider this pricate"""
+        """Connect to the PostgreSQL database server. Consider this private"""
         self.conn = psycopg2.connect(**params)
 
     def close(self):
         """Close the connection to the PostgreSQL server. Consider this
-        pricate"""
+        private"""
         self.conn.close()
