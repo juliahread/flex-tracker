@@ -1,11 +1,14 @@
 from configparser import ConfigParser
+import os
 
-#TODO: Fill out the databse.ini file
+
 def config(filename='database.ini', section='postgresql'):
+    """Parses ini files for information on how to connect to a database"""
     # create a parser
     parser = ConfigParser()
     # read config file
-    parser.read(filename)
+    current_path = os.path.abspath(os.path.dirname(__file__))
+    parser.read(os.path.join(current_path, filename))
 
     # get section, default to postgresql
     db = {}
@@ -14,6 +17,7 @@ def config(filename='database.ini', section='postgresql'):
         for param in params:
             db[param[0]] = param[1]
     else:
-        raise Exception('Section {0} not found in the {1} file'.format(section, filename))
+        raise Exception(
+            'Section {0} not found in the {1} file'.format(section, filename))
 
     return db
