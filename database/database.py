@@ -14,8 +14,6 @@ class database:
     DELETE_SQL = """DELETE FROM parts WHERE part_id = %s"""
 
     def __init__(self):
-        self.params = None
-        self.conn = None
         # Check the current git branch
         # TODO: Make this follow a produciton flag
         current_branch = Repository('.').head.shorthand
@@ -25,16 +23,13 @@ class database:
             self.params = config(filename='test.ini')
 
     # TODO: Complete class functions.
-    def connect(self):
-        """Connect to the PostgreSQL database server. Consider this private"""
-        self.conn = psycopg2.connect(**self.params)
-
-    def close(self):
-        """Close the connection to the PostgreSQL server. Consider this
-        private"""
-        self.conn.close()
 
     def insert_row():
+        conn = psycopg2.connect(**self.params)
+        # Do stuff
+
+        conn.commit()
+        conn.close()
         pass
 
     def update_row():
