@@ -1,5 +1,5 @@
 CREATE TABLE users (
-user_id uuid not null,
+user_id uuid DEFAULT uuid_generate_v4 (),
 password text not null,
 access_key text not null,
 email text not null,
@@ -15,7 +15,7 @@ current_flex real
 );
 
 CREATE TABLE product_info (
-product_id uuid not null,
+product_id uuid DEFAULT uuid_generate_v4 (),
 barcode int,
 name text,
 price real,
