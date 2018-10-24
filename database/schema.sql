@@ -2,8 +2,11 @@ CREATE TABLE users (
 user_id uuid not null,
 password text not null,
 access_key text not null,
+email text not null,
 phone_number int not null,
-preferences jsonb);
+full_name int not null,
+preferences jsonb
+);
 
 CREATE TABLE flex_info (
 user_id uuid not null,
