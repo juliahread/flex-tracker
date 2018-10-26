@@ -8,6 +8,8 @@ flex-tracker
 │   ├── config.py
 │   ├── database.ini
 │   ├── database.py
+│   ├── row.py
+│   ├── schema.sql
 │   └── test.ini
 └── emailLoginScraper.py
 ```

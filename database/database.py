@@ -1,20 +1,26 @@
 import psycopg2
+from psycopg2.extras import DictCursor
 from pygit2 import Repository
 from config import config
 from row import *
 
 
 class database:
-    """A class for accessing PostgreSQL servers."""
-    # TODO: Change this to the appropriate names
-    INSERT_SQL = """INSERT INTO %s(%s)
-             VALUES(%s) RETURNING %s;"""
-    UPDATE_SQL = """ UPDATE %s
-                SET vendor_name = %s
-                WHERE vendor_id = %s;"""
-    DELETE_SQL = """DELETE FROM parts WHERE part_id = %s;"""
+    """A class for accessing PostgreSQL servers. All functions take in a row
+    and this class is generalized to be able to insert into any of the three
+    tables in our databse."""
+
+    INSERT_SQL = """INSERT INTO {}({})
+             VALUES({}) RETURNING {};"""
+    UPDATE_SQL = """ UPDATE {}
+                SET({}) = ({})
+                WHERE {} = {};"""
+    DELETE_SQL = """DELETE FROM {} WHERE {} = {};"""
+    READ_SQL = """SELECT * FROM {} WHERE {} = {};"""
 
     def __init__(self):
+        """Initializes the connection with the server and decides if we are
+        using the test or actual database."""
         # Check the current git branch
         # TODO: Make this follow a produciton flag
         current_branch = Repository('.').head.shorthand
@@ -25,13 +31,21 @@ class database:
 
         self.conn = psycopg2.connect(**self.params)
 
-    # TODO: Complete class functions. Need to find a way to create the uids.
+    # TODO: Not Sure how this will work with json yet.
 
     def insert_row(self, row):
+        """Inserts a row into whichever table correlates with that type of
+        row.
+
+        Returns the id for the newly created row."""
         cur = self.conn.cursor()
 
-        cur.execute(self.INSERT_SQL, (row.get_table, self.dict_to_strings(
-            row.get_columns), row.get_id_name))
+        cols, values = self.dict_to_strings(row.get_columns())
+
+        insert_command = self.INSERT_SQL.format(row.get_table(), cols, values,
+            row.get_id_name())
+
+        cur.execute(insert_command)
 
         id = cur.fetchone()[0]
 
@@ -40,26 +54,63 @@ class database:
         return id
 
     def update_row(self, row):
+        """Updates a row using the id given in the row."""
         cur = self.conn.cursor()
+
+        id_name = row.get_id_name()
+        cols, values = self.dict_to_strings(row.get_columns())
+
+        update_command = self.UPDATE_SQL.format(row.get_table(), cols, values,
+            id_name, "'"+row.get_columns()[id_name]+"'")
+
+        cur.execute(update_command)
+
         self.conn.commit()
         cur.close()
-        pass
+        return True
 
-    def delete_row():
+    def delete_row(self, row):
+        """Deletes a row using the id stored in row."""
         cur = self.conn.cursor()
+
+        id_name = row.get_id_name()
+
+        delete_command = self.DELETE_SQL.format(row.get_table(), id_name,
+            "'"+row.get_columns()[id_name]+"'")
+
+        cur.execute(delete_command)
+
         self.conn.commit()
         cur.close()
-        pass
+        return True
 
-    def read_row(user_id):
-        # Use this guy
-        dict_cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        pass
+    def read_row(self, row):
+        """Reads a row using the id stored in the given row.
+        Returns the same row, however containing the column values as stored
+        in the database."""
+        dict_cur = self.conn.cursor(cursor_factory=DictCursor)
+
+        id_name = row.get_id_name()
+
+        read_command = self.READ_SQL.format(row.get_table(), id_name,
+            "'"+row.get_columns()[id_name]+"'")
+
+        dict_cur.execute(read_command)
+
+        row.cols = dict_cur.fetchone()
+
+        dict_cur.close()
+
+        return row
 
     def dict_to_strings(self, dict):
-        keys = dict.keys().join(", ")
-        values = dict.values().join(", ")
+        """Helper function to parse the dictionary holding the columns in the
+        row class."""
+        dict_tup = dict.items()
+        keys = ", ".join(list(map(lambda x: str(x[0]), dict_tup)))
+        values = str(list(map(lambda x: str(x[1]), dict_tup)))[1:-1]
         return keys, values
 
     def __del__(self):
+        """When the databse instance is deleted, the connection is closed."""
         self.conn.close()
