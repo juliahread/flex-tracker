@@ -11,8 +11,12 @@ flex-tracker
 │   ├── row.py
 │   ├── schema.sql
 │   └── test.ini
-└── emailLoginScraper.py
+└── scraping
+    ├── emaillogin.py
+    └── emailloginscraper.py
 ```
+Note that some of these files are not available on this repository because they
+contain login information.
 
 - - - -
 
