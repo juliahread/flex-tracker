@@ -1,6 +1,12 @@
 import easyimap
 import emaillogin as el
 
+<<<<<<< HEAD
+=======
+# Variables for logging in
+
+
+>>>>>>> d859c00cb49a4a0c7da19fd8396cf858d6407dd2
 def check_email_for_new_logins():
     """
     Checks the email and scrapes for logins and passwords from the claremont
