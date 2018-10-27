@@ -103,7 +103,8 @@ class database:
 
         return row
 
-    def dict_to_strings(self, dict):
+    @staticmethod
+    def dict_to_strings(dict):
         """Helper function to parse the dictionary holding the columns in the
         row class."""
         dict_tup = dict.items()
