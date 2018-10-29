@@ -1,6 +1,5 @@
 import psycopg2
 from psycopg2.extras import DictCursor
-from pygit2 import Repository
 from config import config
 from row import *
 
@@ -21,15 +20,12 @@ class database:
     def __init__(self):
         """Initializes the connection with the server and decides if we are
         using the test or actual database."""
-        # Check the current git branch
         # TODO: Make this follow a produciton flag
-        current_branch = Repository('.').head.shorthand
-        if (current_branch == 'master'):
-            self.params = config()
-        else:
-            self.params = config(filename='test.ini')
+        self.params = config()
 
         self.conn = psycopg2.connect(**self.params)
+
+        self.suffix = "_test"
 
     # TODO: Not Sure how this will work with json yet.
 
@@ -42,8 +38,8 @@ class database:
 
         cols, values = self.dict_to_strings(row.get_columns())
 
-        insert_command = self.INSERT_SQL.format(row.get_table(), cols, values,
-            row.get_id_name())
+        insert_command = self.INSERT_SQL.format(row.get_table() + self.suffix,
+            cols, values, row.get_id_name())
 
         cur.execute(insert_command)
 
@@ -60,8 +56,8 @@ class database:
         id_name = row.get_id_name()
         cols, values = self.dict_to_strings(row.get_columns())
 
-        update_command = self.UPDATE_SQL.format(row.get_table(), cols, values,
-            id_name, "'"+row.get_columns()[id_name]+"'")
+        update_command = self.UPDATE_SQL.format(row.get_table() + self.suffix,
+            cols, values, id_name, "'"+row.get_columns()[id_name]+"'")
 
         cur.execute(update_command)
 
@@ -75,8 +71,8 @@ class database:
 
         id_name = row.get_id_name()
 
-        delete_command = self.DELETE_SQL.format(row.get_table(), id_name,
-            "'"+row.get_columns()[id_name]+"'")
+        delete_command = self.DELETE_SQL.format(row.get_table() + self.suffix,
+            id_name, "'"+row.get_columns()[id_name]+"'")
 
         cur.execute(delete_command)
 
@@ -92,8 +88,8 @@ class database:
 
         id_name = row.get_id_name()
 
-        read_command = self.READ_SQL.format(row.get_table(), id_name,
-            "'"+row.get_columns()[id_name]+"'")
+        read_command = self.READ_SQL.format(row.get_table() + self.suffix,
+            id_name, "'"+row.get_columns()[id_name]+"'")
 
         dict_cur.execute(read_command)
 

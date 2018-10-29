@@ -26,4 +26,3 @@ contain login information.
 - Some python libraries you might need to download to run this code:
   - easyimap
   - psycopg2
-  - pygit2
