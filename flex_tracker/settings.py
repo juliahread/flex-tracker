@@ -31,13 +31,8 @@ except:
 
 #DEBUG = True
 try:
-    DEBUG = os.environ['DJANGO_DEBUG']
+    DEBUG = os.environ['DJANGO_DEBUG'] == 'True'
 except:
-    DEBUG = 'True'
-
-if DEBUG == 'False':
-    DEBUG = False
-else:
     DEBUG = True
 
 ALLOWED_HOSTS = []
