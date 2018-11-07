@@ -7,5 +7,5 @@ def index(request):
     #return HttpResponse("Hello, world. You're at the " + str(flex) + " index!")
     #template = loader.get_template("templates/login.html")
     #context = {}
-    return render(request, "settings.html")
+    return render(request, "home.html")
     #return render(request, '/templates/login.html', {})

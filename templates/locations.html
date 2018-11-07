@@ -1,7 +1,6 @@
 <html>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="../static/css/home.css" rel="stylesheet" type="text/css">
-    <link href="../static/css/jumbotron.css" rel="stylesheet">
+    <link href="../static/css/locations.css" rel="stylesheet" type="text/css">
     <header>
       <div class="jumbotron" height="300px">
           <nav role="navigation">
@@ -28,27 +27,45 @@
               </div>
           </nav>
           <center>
-              <h1>Settings</h1>
+              <h1>Locations & Availability</h1>
           </center>
         </div>
     </header>
     <body>
-        <center>
-            <h1>Change Password</h1>
-            <form action="/action_page.php">
-                <input type="password" name="old" placeholder="Old Password"><br>
-                <input type="password" name="new" placeholder="New Password"><br>
-                <input type="password" name="confirm" placeholder="Confirm New Password"><br>
-                <input type="submit" value="Submit">
-            </form>
-            <h1>Change Email Preferences</h1>
-            <form action="/action_page.php">
-                <input type="checkbox" name="sendEmails" value="send">Send me email notifications.<br>
-                <h2>Change email</h2>
-                <input type="text" name="current" placeholder="Current Email"><br>
-                <input type="text" name="new" placeholder="New Email"><br>
-                <input type="submit" value="Change!">
-            </form>
-        </center>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <h2>Hoch-Shanahan Dining Commons</h2>
+            <h3>Monday–Friday</h3>
+              <ul id="times">
+                <li>Breakfast: 7:30–9:30 a.m.</li>
+                <li>Lunch: 11:15 a.m.–1 p.m.</li>
+                <li>Dinner: 5–7 p.m.</li>
+              </ul>
+            <h3>Weekends/Holidays</h3>
+              <ul>
+                <li>Brunch: 10:30 a.m.–12:45 p.m.</li>
+                <li>Dinner: 5–7 p.m.</li>
+              </ul>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <h2>Jay's Place</h2>
+            <ul>
+              <li>Sunday–Thursday 7 p.m.–1 a.m.</li>
+              <li>Friday–Saturday 8 p.m.–2 a.m.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <h2>The Café</h2>
+            <ul>
+              <li>Monday–Friday, 7:30 a.m.–7 p.m.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </body>
 </html>
