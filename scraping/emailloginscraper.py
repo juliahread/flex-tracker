@@ -10,6 +10,8 @@ def check_email_for_new_logins(first_name, last_name):
     Returns: The access key recieved for the user of the given name.
     """
     possible_emails = {}
+    fname = first_name.lower()
+    lname = last_name.lower()
 
     # Loop through unread emails
     imapper = easyimap.connect(el.HOST, el.USER, el.PASSWORD, read_only=True)
@@ -19,31 +21,31 @@ def check_email_for_new_logins(first_name, last_name):
             fn, ln = scrape_email_for_name(mail.body)
             # check if the last name is correct and put the first name in the
             # dictionary
-            print(fn, ln)
-            if (ln == last_name):
+            if (ln == lname):
                 possible_emails[fn] = mail.uid
-    imapper.quit()
 
     # Find the correct email
-    corr_email = ""
+    corr_email = 0
 
-    if (len(possible_emails) == 0):
+    if (len(possible_emails) == 0): # No emails picked up
         return None
-    elif (first_name in possible_emails):
-        corr_email = possible_emails[first_name]
-    elif (len(possible_emails) == 1):
-        # This would be assuming that gathering users is in a queue
-        corr_email = possible_emails.values()[0]
+    elif (fname in possible_emails): # Only one possibility
+        corr_email = possible_emails[fname]
     else:
         # Case where the student's first name is not the same that is
         # listed on claremont card website
-        corr_email = possible_emails[get_best_match(first_name,
-            possible_emails.keys)]
-
+        bmatch = get_best_match(fname, possible_emails.keys())
+        if (bmatch == ''):
+            return None
+        corr_email = possible_emails[bmatch]
 
     # Go back in an mark the email as read while grabbing the correct info
-    imapper = easyimap.connect(el.HOST, el.USER, el.PASSWORD, read_only=False)
-    access_key = scrape_email_for_access_key(imapper.mail(corr_email).body)
+    # Using witchcraft to change imapper's read_only status
+    imapper._read_only = False
+    imapper.change_mailbox('INBOX')
+
+    access_key = scrape_email_for_access_key(imapper.mail(
+        str(corr_email)).body)
     imapper.quit()
 
     return access_key
@@ -83,7 +85,7 @@ def scrape_email_for_name(mail_body):
     account from the body of an email."""
     body = mail_body.split("\r\n")
     name_line = body[1].split(' ')[1:]
-    return name_line[0], name_line[-1] # Firstname, Lastname
+    return name_line[0].lower(), name_line[-1].lower() # Firstname, Lastname
 
 def get_best_match(first_name, possible_matches):
     """
@@ -96,19 +98,21 @@ def get_best_match(first_name, possible_matches):
     Returns a string that is the best match to the name
         """
     best_match = ""
-    seqMatch = SequenceMatcher(None,first_name,"")
+    best_match_len = 0
+    seqMatch = SequenceMatcher(None, first_name, '')
 
     # Loop through and find the longest substring match
     for pmatch in possible_matches:
         seqMatch.set_seq2(pmatch)
         gcs = seqMatch.find_longest_match(0, len(first_name), 0, len(pmatch))
-        if (len(gcs) == 0):
+        if (gcs.size == 0):
             continue
-        elif (pmatch[0] == first_name[0] and len(gcs) >= len(best_match)):
-            best_match = gcs
+        elif (pmatch[0] == first_name[0] and gcs.size >= best_match_len):
+            best_match = pmatch
+            best_match_len = gcs.size
 
     return best_match
 
 
 if __name__ == "__main__":
-    check_email_for_new_logins(None, None)
+    print(check_email_for_new_logins("j", "Cabral"))
