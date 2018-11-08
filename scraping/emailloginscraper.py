@@ -112,7 +112,3 @@ def get_best_match(first_name, possible_matches):
             best_match_len = gcs.size
 
     return best_match
-
-
-if __name__ == "__main__":
-    print(check_email_for_new_logins("j", "Cabral"))

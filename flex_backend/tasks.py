@@ -6,15 +6,13 @@ from scraping.emailloginscraper import check_email_for_new_logins
 
 @app.task
 def recieve_access_key(user_id):
-    # TODO: Modify emailloginscraper to look for a specific email
-    # to avoid race conditions (function is currently generalized
-    # to grab any email with login info)
-
     # grab the user information from the database
-    user = User.objects.get(pk=user_id) # This may change as the user implen. changes
+    user = User.objects.get(pk=user_id)
+        # TODO: This may change as the user implen. changes
 
-    logins = check_email_for_new_logins()
-
-    # TODO: update the access_key
+    # TODO: Set this up with a loop until it recieves a valid answer and
+    # catch a timeout.
+    user.access_key = check_email_for_new_logins(user.first_name,
+        user.last_name)
 
     user.save()
