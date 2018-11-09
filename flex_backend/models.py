@@ -6,7 +6,7 @@ from django import forms
 class LogInForm(forms.Form):
     """A typical class defining a model, derived from the Model class."""
     # Fields
-    user_name = models.CharField(max_length=100, help_text='Enter your username')
+    email = models.CharField(max_length=100, help_text='Enter your email')
     password = models.CharField(max_length=100, help_text='Enter your password')
 
     # Methods
@@ -16,4 +16,7 @@ class LogInForm(forms.Form):
     
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
-        return self.user_name
+        return self.email
+    
+    def is_valid(self):
+        return False
