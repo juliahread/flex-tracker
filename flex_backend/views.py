@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from .models import LogInForm
 
 def index(request):
@@ -12,9 +12,7 @@ def index(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
-
-    # if a GET (or any other method) we'll create a blank form
+            return render(request, 'home.html')
     else:
         form = LogInForm()
 
