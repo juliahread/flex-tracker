@@ -165,6 +165,8 @@
 
  .jumbotron {
    padding: 0px;
+   min-height: 18%;  /* Fallback for browsers do NOT support vh unit */
+   min-height: 18vh;
  }
 
  * {
@@ -198,6 +200,7 @@
    padding: 16px;
    text-align: center;
    background-color: #f1f1f1;
+   min-height: 50%;
  }
 
  /* Responsive columns - one column layout (vertical) on small screens */

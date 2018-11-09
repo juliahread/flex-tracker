@@ -39,7 +39,7 @@
 
    z-index: 1;
 
-   /* -webkit-user-select: none; */
+   -webkit-user-select: none;
    user-select: none;
  }
 
@@ -164,7 +164,11 @@
  }
 
  .jumbotron {
-   padding: 0px;
+  padding: 0px;
+  width: 100%;
+  text-align: center;
+  min-height: 18%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 18vh;
  }
 
 
@@ -218,4 +222,44 @@
 	border-right: 20px solid transparent;
 	border-top: 40px solid #555;
   align: flex-end;
+}
+
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 80%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 24px;
+  margin-left: 10%;
+}
+
+.active, .collapsible:hover {
+  background-color: #e6e6e6;
+}
+
+.collapsible:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 16px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.content {
+  padding: 0px 18px;
+  background-color: white;
+  max-height: 0;
+  width: 80%;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  margin-left: 10%;
+  font-size: 18px;
 }
