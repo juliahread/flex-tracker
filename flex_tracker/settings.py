@@ -35,7 +35,7 @@ try:
 except:
     DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,8 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'flex_tracker',
-    'flex_backend',
+    'flex_backend.apps.FlexBackendConfig',
 ]
 
 MIDDLEWARE = [
@@ -92,10 +91,6 @@ DATABASES = {
         'HOST': database_params['host'],
         'USER': database_params['user'],
         'PASSWORD': database_params['password'],
-        'TEST': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'testdatabase',
-        },
     }
 }
 
