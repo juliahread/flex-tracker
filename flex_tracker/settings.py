@@ -66,8 +66,8 @@ ROOT_URLCONF = 'flex_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),
-                os.path.join(BASE_DIR, 'registration'),],
+        'DIRS': [os.path.join(BASE_DIR, 'flex_backend/templates'),
+                os.path.join(BASE_DIR, 'flex_backend/registration'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
