@@ -1,4 +1,5 @@
 from django.db import models
+<<<<<<< HEAD
 from django.contrib.postgres.fields import JSONField
 import uuid
 
@@ -32,3 +33,6 @@ class product_info(models.Model):
     name = models.CharField(max_length=256)
     price = models.FloatField()
     location = JSONField()
+=======
+from django import forms
+>>>>>>> origin/login
