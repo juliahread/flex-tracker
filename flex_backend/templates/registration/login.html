@@ -11,28 +11,32 @@
 
     <!-- Custom styles for this template -->
     <link href="../static/css/signin.css" rel="stylesheet">
-
   </head>
-
   <body>
-
     <div class="container">
 
       <form method="post" class="form-signin">
        <center>
           <h2 class="form-signin-heading">Flex Tracker Sign In</h2>
-        </center>
         {% csrf_token %}
-        {{form.as_p}}
-        <!-- <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div> -->
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        {% for field in form %}
+        <p>
+          {{ field.label_tag }}<br>
+          {{ field }}
+          {% if field.help_text %}
+            <small style="color: grey">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+        {% endfor %}
+        </p>
+        <hr></hr>
+        <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
       </form>
+      <hr></hr>
       <a class="btn btn-primary" href="/accounts/signup/">Sign up</a>
-
+    </center>
     </div>
   </body>
 </html>
