@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'flex_tracker',
     'flex_backend',
+    'accounts.apps.AccountsConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -67,7 +69,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'flex_backend/templates'),
-                os.path.join(BASE_DIR, 'flex_backend/registration'),],
+                os.path.join(BASE_DIR, 'flex_backend/templates/registration'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +83,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'flex_tracker.wsgi.application'
-LOGIN_REDIRECT_URL = '/test'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
 
 
 # Database
