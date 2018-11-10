@@ -5,13 +5,9 @@ from django.views.generic.base import RedirectView
 from . import views
 
 urlpatterns = [
-<<<<<<< HEAD
-    path('', views.index, name='index'),
-    path('/home', view.home, name='home'),
-=======
     path('', RedirectView.as_view(url='/accounts/login')),
+    path('home/', views.home, name='home'),
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')), 
-    path('accounts/', include('django.contrib.auth.urls')), 
->>>>>>> origin/login
+    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import logging
 from database.config import config
 
 database_params = config()
@@ -40,6 +41,29 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+if not DEBUG:
+    logger = logging.getLogger(__name__)
+    DJANGO_LOG_LEVEL= True
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'file': {
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': '/home/flex_tracker/log/django.log',
+            },
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['file'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+        },
+    }
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,14 +71,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'flex_backend.apps.FlexBackendConfig',
-=======
-    'flex_tracker',
-    'flex_backend',
     'accounts.apps.AccountsConfig',
-
->>>>>>> origin/login
 ]
 
 MIDDLEWARE = [
@@ -72,12 +90,8 @@ ROOT_URLCONF = 'flex_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-<<<<<<< HEAD
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
-=======
         'DIRS': [os.path.join(BASE_DIR, 'flex_backend/templates'),
                 os.path.join(BASE_DIR, 'flex_backend/templates/registration'),],
->>>>>>> origin/login
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
