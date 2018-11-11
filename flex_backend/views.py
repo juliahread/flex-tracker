@@ -12,8 +12,15 @@ def index(request):
 def home(request):
     if request.user.is_authenticated:
         context = {}
-        context['balance'] = flex_into.obejcts.get(user_user_id=request.user_id)
+        context['balance'] = flex_info.objects.get(user_username=request.user.username)
         context['daysLeft'] = (5 - date.today().weekday()) % 7
         return render(request, "home.html", context)
+    else:
+        raise PermissionDenied
+
+def settings(request):
+    if request.user.is_authenticated:
+        context = {}
+        context
     else:
         raise PermissionDenied
