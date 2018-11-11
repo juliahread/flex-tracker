@@ -1,0 +1,63 @@
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="../static/css/locations.css" rel="stylesheet" type="text/css">
+    <header>
+      <div class="jumbotron" height="300px">
+          <nav role="navigation">
+              <div id="menuToggle">
+              <!--
+                A fake / hidden checkbox is used as click reciever,
+                so you can use the :checked selector on it.
+              -->
+                  <input type="checkbox" />
+                  <span></span>
+                  <span></span>
+                  <span></span>
+
+                        <!--
+                        Too bad the menu has to be inside of the button
+                        but hey, it's pure CSS magic.
+                        -->
+                  <ul id="menu">
+                      <a href="home.html"><li>Home</li></a>
+                      <a href="suggestions.html"><li>Spending Suggestions</li></a>
+                      <a href="locations.html"><li>Locations & Availability</li></a>
+                      <a href="settings.html"><li>Settings</li></a>
+                  </ul>
+              </div>
+          </nav>
+          <center>
+              <h1>Locations & Availability</h1>
+          </center>
+        </div>
+    </header>
+    <body>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <h2>Hoch-Shanahan Dining Commons</h2>
+            <h3>Monday–Friday</h3>
+            <p>Breakfast: 7:30–9:30 a.m.</p>
+            <p>Lunch: 11:15 a.m.–1 p.m.</p>
+            <p>Dinner: 5–7 p.m.</p>
+            <h3>Weekends/Holidays</h3>
+            <p>Brunch: 10:30 a.m.–12:45 p.m.</p>
+            <p>Dinner: 5–7 p.m.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <h2>Jay's Place</h2>
+            <p>Sunday–Thursday 7 p.m.–1 a.m.</p>
+            <p>Friday–Saturday 8 p.m.–2 a.m.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <h2>The Café</h2>
+            <p>Monday–Friday, 7:30 a.m.–7 p.m.</p>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
