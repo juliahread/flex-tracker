@@ -12,7 +12,7 @@ def index(request):
 def home(request):
     if request.user.is_authenticated:
         context = {}
-        context['balance'] = flex_info.objects.get(user_username=request.user.username)
+        context['balance'] = "%.2f" % flex_info.objects.get(user_id=request.user.id).current_flex
         context['daysLeft'] = (5 - date.today().weekday()) % 7
         return render(request, "home.html", context)
     else:
