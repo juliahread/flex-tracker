@@ -17,11 +17,11 @@ class flex_info(models.Model):
         ('Boost Mobile', 'myboostmobile.com'),
         ('Cricket Wireless', 'sms.cricketwireless.net'),
         ('Project Fi', 'msg.fi.google.com'),
+        ('Republic Wireless', 'text.republicwireless.com'),
         ('Sprint', 'messaging.sprintpcs.com'),
         ('U.S. Cellular', 'tmomail.net'),
         ('Verizon', 'email.uscc.net'),
         ('Virgin Mobile', 'vtext.com'),
-        ('Republic Wireless', 'text.republicwireless.com'),
         ('UNKNOWN', 'UNKNOWN'),
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
