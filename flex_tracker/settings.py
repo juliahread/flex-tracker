@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import logging
 from database.config import config
 
 database_params = config()
@@ -35,10 +36,33 @@ try:
 except:
     DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+
+if not DEBUG:
+    logger = logging.getLogger(__name__)
+    DJANGO_LOG_LEVEL= True
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'file': {
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': '/home/flex_tracker/log/django.log',
+            },
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['file'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+        },
+    }
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -47,10 +71,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'flex_tracker',
-    'flex_backend',
+    'flex_backend.apps.FlexBackendConfig',
     'accounts.apps.AccountsConfig',
-
 ]
 
 MIDDLEWARE = [
@@ -98,10 +120,6 @@ DATABASES = {
         'HOST': database_params['host'],
         'USER': database_params['user'],
         'PASSWORD': database_params['password'],
-        'TEST': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'testdatabase',
-        },
     }
 }
 

@@ -2,18 +2,72 @@
 
 ## Current Tree View
 ```
-flex-tracker
 ├── README.md
+├── accounts
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
 ├── database
 │   ├── config.py
 │   ├── database.ini
 │   ├── database.py
 │   ├── row.py
-│   ├── schema.sql
-│   └── test.ini
-└── scraping
-    ├── emaillogin.py
-    └── emailloginscraper.py
+│   └── schema.sql
+├── flex_backend
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── home.css
+│   │   │   ├── locations.css
+│   │   │   ├── signin.css
+│   │   │   └── suggestions.css
+│   │   └── images
+│   │       └── favicon.ico
+│   ├── templates
+│   │   ├── emailprefs.html
+│   │   ├── home.html
+│   │   ├── registration
+│   │   │   └── login.html
+│   │   └── signup.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── flex_tracker
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
+├── scraping
+│   ├── emaillogin.py
+│   ├── emailloginscraper.py
+│   └── flexscrapper.py
+├── static
+│   ├── css
+│   │   ├── home.css
+│   │   ├── locations.css
+│   │   ├── signin.css
+│   │   └── suggestions.css
+│   └── images
+│       └── favicon.ico
+└── templates
+    ├── home.html
+    ├── locations.html
+    ├── login.html
+    ├── settings.html
+    └── suggestions.html
 ```
 Note that some of these files are not available on this repository because they
 contain login information.
