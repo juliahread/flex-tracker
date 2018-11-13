@@ -13,8 +13,15 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import logging
 from database.config import config
-
+try:
+     from c import *
+except:
+    pass
 database_params = config()
+
+#import c
+#print(c.DEBUG)
+#print(DEBUG)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,15 +34,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 try:
     SECRET_KEY = os.environ['SECRET_KEY']
 except:
-    SECRET_KEY = ''
+    pass
+    #SECRET_KEY = ''
 # SECURITY WARNING: don't run with debug turned on in production!
 
 #DEBUG = True
 try:
     DEBUG = os.environ['DJANGO_DEBUG'] == 'True'
 except:
-    DEBUG = True
-
+    #DEBUG = True
+    pass
 ALLOWED_HOSTS = ['*']
 
 
@@ -160,4 +168,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+
 STATIC_URL = '/static/'
+
+if not DEBUG:
+    STATIC_ROOT = '/home/flex_tracker/flex_backend/static'
+
