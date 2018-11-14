@@ -7,7 +7,7 @@ from flex_backend.models import flex_info
 from datetime import date
 from accounts.models import SignUpForm
 
-
+#TODO: Comments!
 def index(request):
     flex= u'\U0001F4AA'
     return HttpResponse("Hello, world. You're at the " + str(flex) + " index!")
