@@ -42,8 +42,7 @@ except:
 try:
     DEBUG = os.environ['DJANGO_DEBUG'] == 'True'
 except:
-    #DEBUG = True
-    pass
+    DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
@@ -173,4 +172,3 @@ STATIC_URL = '/static/'
 
 if not DEBUG:
     STATIC_ROOT = '/home/flex_tracker/flex_backend/static'
-
