@@ -156,7 +156,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
@@ -173,4 +173,3 @@ STATIC_URL = '/static/'
 
 if not DEBUG:
     STATIC_ROOT = '/home/flex_tracker/flex_backend/static'
-

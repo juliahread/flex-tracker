@@ -6,11 +6,6 @@ import uuid
 
 class flex_info(models.Model):
 
-    def default_preferences():
-        return {'email_notification' : False,
-                'text_notification' : False,
-                'favorite_foods' : []}
-
     SERVICE_PROVIDER_CHOICES = (
         ('Alltel', 'message.alltel.com'),
         ('AT&T', 'txt.att.net'),
@@ -31,7 +26,9 @@ class flex_info(models.Model):
     phone_number = models.BigIntegerField(null=True )
     service_provider = models.CharField(max_length=50,
         choices=SERVICE_PROVIDER_CHOICES, default='UNKNOWN')
-    preferences = JSONField(default=default_preferences)
+    email_notification = models.BooleanField(default=False)
+    text_notification = models.BooleanField(default=False)
+    # TODO: favorite_foods
 
     def get_text_email(self):
         return str(self.phone_number) + '@' + self.get_service_provider_display()
