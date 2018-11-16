@@ -4,25 +4,6 @@ import requests
 import time
 import datetime
 
-'''
-Other Option
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("download.default_directory=/home")
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--window-size=1420,1080')
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--disable-gpu')
-chrome_options.add_argument("-incognito")
-driver = webdriver.Chrome(chrome_options=chrome_options)
-'''
-'''
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
-options = Options()
-options.add_argument("--headless")
-driver = webdriver.Firefox(firefox_options=options, executable_path="/usr/local/bin/geckodriver")
-'''
-
 class FlexScrapper():
     """
     Class for scrapping the cards.cuc webpage
@@ -39,7 +20,14 @@ class FlexScrapper():
 
     def getCookies(self):
         url = 'https://cards.cuc.claremont.edu/login.php'
-        driver = webdriver.PhantomJS()
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("download.default_directory=/home")
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--window-size=1420,1080')
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument("-incognito")
+        driver = webdriver.Chrome(chrome_options=chrome_options)
         driver.get(url)
         self.skey = driver.find_element_by_name('skey').get_attribute("value")
         driver.find_element_by_id("loginphrase").send_keys('muddflextracker@gmail.com')
