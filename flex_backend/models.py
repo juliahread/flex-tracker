@@ -19,15 +19,17 @@ class flex_info(models.Model):
         ('Virgin Mobile', 'vtext.com'),
         ('UNKNOWN', 'UNKNOWN'),
     )
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE)
     meal_plan = models.CharField(max_length=256)
     current_flex = models.FloatField()
     access_key = models.CharField(max_length=10, default="")
-    phone_number = models.BigIntegerField(null=True )
+    phone_number = models.BigIntegerField(null=True)
     service_provider = models.CharField(max_length=50,
         choices=SERVICE_PROVIDER_CHOICES, default='UNKNOWN')
     email_notification = models.BooleanField(default=False)
     text_notification = models.BooleanField(default=False)
+    last_updated = models.DateTimeField(auto_now=True, null=True)
     # TODO: favorite_foods
 
     def get_text_email(self):
