@@ -8,6 +8,9 @@ sys.path.append('../')
 from database.config import config
 import dateutil.parser
 
+
+from flex_backend.models import *
+
 '''
 Other Option
 chrome_options = webdriver.ChromeOptions()
@@ -76,7 +79,7 @@ class FlexScrapper():
         conn = psycopg2.connect(**login)
         curs = conn.cursor()
 
-        sql = "SELECT date FROM flex_backend_flex_transaction WHERE user_id = {} LIMIT 1".format(self.id)
+        sql = "SELECT date FROM flex_backend_flex_transaction WHERE user_id = {} ORDER BY date asc LIMIT 1".format(self.id)
         curs.execute(sql)
         date = curs.fetchall()[0][0]
         for i in self.data:
@@ -91,3 +94,13 @@ class FlexScrapper():
                 conn.commit()
                 curs.close()
                 conn.close()
+
+#p = flex_transaction.objects.all(). .get(user_id = 8, ) .filter() access__isnull = False 
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()
