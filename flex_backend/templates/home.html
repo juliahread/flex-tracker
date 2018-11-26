@@ -1,0 +1,57 @@
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="../static/css/home.css" rel="stylesheet" type="text/css">
+    <header>
+      <div class="jumbotron" height="300px">
+        <nav role="navigation">
+          <div id="menuToggle">
+              <!--
+                A fake / hidden checkbox is used as click reciever,
+                so you can use the :checked selector on it.
+              -->
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                        <!--
+                        Too bad the menu has to be inside of the button
+                        but hey, it's pure CSS magic.
+                        -->
+                <ul id="menu">
+                  <a href="/home"><li>Home</li></a>
+                  <a href="suggestions.html"><li>Spending Suggestions</li></a>
+                  <a href="locations.html"><li>Locations & Availability</li></a>
+                  <a href="/settings"><li>Settings</li></a>
+                  <a href="{% url 'logout' %}"><li>Logout</li></a>
+                </ul>
+          </div>
+        </nav>
+          <center>
+              <h1>Flex Tracker</h1>
+          </center>
+        </div>
+    </header>
+    <body>
+      <!--- Remove extra divs -->
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <font size="18">
+              <p style="text-align:left;">
+                 Balance
+                <span style="float:right;">
+                  <b>${{balance}}</b>
+                </span>
+              </p>
+              <p style="text-align:left;">
+                Expiration
+                <span style="float:right;">
+                  In <b>{{daysLeft}}</b> days.
+                </span>
+              </p>
+            </font>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>

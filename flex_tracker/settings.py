@@ -11,9 +11,17 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import logging
 from database.config import config
-
+try:
+     from c import *
+except:
+    pass
 database_params = config()
+
+#import c
+#print(c.DEBUG)
+#print(DEBUG)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +34,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 try:
     SECRET_KEY = os.environ['SECRET_KEY']
 except:
-    SECRET_KEY = ''
+    pass
+    #SECRET_KEY = ''
 # SECURITY WARNING: don't run with debug turned on in production!
 
 #DEBUG = True
@@ -34,11 +43,33 @@ try:
     DEBUG = os.environ['DJANGO_DEBUG'] == 'True'
 except:
     DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+
+if not DEBUG:
+    logger = logging.getLogger(__name__)
+    DJANGO_LOG_LEVEL= True
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'file': {
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': '/home/flex_tracker/log/django.log',
+            },
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['file'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+        },
+    }
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -48,6 +79,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'flex_backend.apps.FlexBackendConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +97,8 @@ ROOT_URLCONF = 'flex_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'flex_backend/templates'),
+                os.path.join(BASE_DIR, 'flex_backend/templates/registration'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,6 +112,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'flex_tracker.wsgi.application'
+LOGIN_REDIRECT_URL = '/home'
+LOGOUT_REDIRECT_URL = '/'
+
 
 
 # Database
@@ -119,7 +155,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
@@ -131,4 +167,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+
 STATIC_URL = '/static/'
+
+if not DEBUG:
+    STATIC_ROOT = '/home/flex_tracker/flex_backend/static'
