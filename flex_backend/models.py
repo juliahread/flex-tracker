@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.postgres.fields import JSONField
-from django.db.models import signals
-from flex_backend.tasks import recieve_access_key
 import uuid
 
 # Create your models here.
@@ -15,14 +13,6 @@ class User(models.Model):
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)
     preferences = JSONField()
-
-    # TODO: Not yet sure how this works
-    def user_post_save(sender, instance, signal, *args, **kwargs):
-        # Send verification email
-        recieve_access_key.delay(instance.pk)
-
-# TODO: Not yet sure where this is supposed to go
-#signals.post_save.connect(user_post_save, sender=User)
 
 class flex_info(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
