@@ -84,8 +84,10 @@ class FlexScrapper():
         #sql = "SELECT date FROM flex_backend_flex_transaction WHERE user_id = {} ORDER BY date asc LIMIT 1".format(self.id)
         #curs.execute(sql)
         #date = curs.fetchall()[0][0]
-
-        date = max(flex_transaction.objects.filter(user_id = self.id), key=attrgetter("date")).date
+        try:
+            date = max(flex_transaction.objects.filter(user_id = self.id), key=attrgetter("date")).date
+        except:
+            date = datetime.datetime(2012, 1, 1)
         print(self.data[0].split(','))
         current = float(self.data[0].split(',')[3])
         flex = flex_info.objects.get(user_id=self.id)
