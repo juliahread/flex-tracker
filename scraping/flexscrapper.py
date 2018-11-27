@@ -111,9 +111,13 @@ class FlexScrapper():
                 #curs.close()
                 #conn.close()
 
-#p = flex_transaction.objects.all(). .get(user_id = 8, ) .filter() access_key__isnull = False 
+#p = flex_transaction.objects.all(). .get(user_id = 8, ) .filter() access_key__isnull = False
 
 #max(p,key=attrgetter("date"))
+    def getCSVAndUpdateFlex(self):
+        self.getCSV()
+        self.updateFlex()
+
 
 def main():
     allFlex = flex_info.objects.exclude(access_key = '')
