@@ -20,7 +20,7 @@ def home(request):
             context['daysLeft'] = (5 - date.today().weekday()) % 7
             return render(request, "home.html", context)
         except:
-            return render(request, "error.html", context)
+            return render(request, "tutorial.html", context)
     else:
         return redirect('login')
 
