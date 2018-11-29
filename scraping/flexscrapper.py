@@ -5,7 +5,6 @@ import datetime
 import psycopg2
 import sys
 sys.path.append('../')
-from database.config import config
 import dateutil.parser
 import pytz
 from operator import attrgetter

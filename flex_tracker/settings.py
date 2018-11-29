@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import logging
 from database.config import config
+import scraping.emaillogin as el
 try:
      from c import *
 except:
@@ -69,6 +70,13 @@ if not DEBUG:
             },
         },
     }
+
+# Email info
+EMAIL_PORT = 587
+EMAIL_HOST = el.HOST
+EMAIL_HOST_USER = el.USER
+EMAIL_HOST_PASSWORD = el.PASSWORD
+EMAIL_USE_TLS = True
 
 
 INSTALLED_APPS = [

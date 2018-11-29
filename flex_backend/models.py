@@ -1,4 +1,4 @@
-from background_task import Task
+from background_task.models import Task
 from django.db import models
 from django.contrib.postgres.fields import JSONField
 from django.conf import settings
@@ -36,10 +36,10 @@ class flex_info(models.Model):
     def get_text_email(self):
         return str(self.phone_number) + '@' + self.get_service_provider_display()
 
-    def start_updating_database(self, enddate):
+    def start_updating_database(self, enddate = None):
         """Only call this function once after getting the access_key,
         This sets up an hourly background task for updating the user's flex"""
-        updateFlexForUser(self.user_id, self.access_key, repeat=Task.HOURLY,
+        updateFlexForUser(self.user_id, self.access_key, repeat=Task.HOURLY/6,
             repeat_until=enddate)
 
 

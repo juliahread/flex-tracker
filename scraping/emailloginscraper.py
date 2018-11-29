@@ -1,5 +1,5 @@
 import easyimap
-import emaillogin as el
+import scraping.emaillogin as el
 from difflib import SequenceMatcher
 
 def check_email_for_new_logins(first_name, last_name):
