@@ -2,13 +2,12 @@ from selenium import webdriver
 import requests
 import time
 import datetime
-import psycopg2
 import sys
 sys.path.append('../')
 import dateutil.parser
 import pytz
 from operator import attrgetter
-from flex_backend.models import *
+from flex_backend.models import flex_info, flex_transaction
 
 '''
 Other Option
@@ -113,10 +112,10 @@ class FlexScrapper():
 #p = flex_transaction.objects.all(). .get(user_id = 8, ) .filter() access_key__isnull = False
 
 #max(p,key=attrgetter("date"))
+
     def getCSVAndUpdateFlex(self):
         self.getCSV()
         self.updateFlex()
-
 
 def main():
     allFlex = flex_info.objects.exclude(access_key = '')
