@@ -122,9 +122,8 @@ def main():
     allFlex = flex_info.objects.exclude(access_key = '')
     for i in allFlex:
         flex = FlexScrapper(i.user_id, i.access_key)
-        flex.getCookies()
-        flex.getCSV()
-        flex.updateFlex()
+        flex.getCSVAndUpdateFlex()
+        
 
 if __name__ == "__main__":
     main()
