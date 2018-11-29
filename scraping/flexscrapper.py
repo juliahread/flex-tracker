@@ -114,6 +114,7 @@ class FlexScrapper():
 #max(p,key=attrgetter("date"))
 
     def getCSVAndUpdateFlex(self):
+        self.getCookies()
         self.getCSV()
         self.updateFlex()
 
