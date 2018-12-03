@@ -1,55 +1,22 @@
 <html>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="../static/css/suggestions.css" rel="stylesheet" type="text/css">
-  <link href="../static/css/jumbotron.css" rel="stylesheet">
-  <header>
-    <div class="jumbotron" height="300px">
-      <nav role="navigation">
-        <div id="menuToggle">
-          <!--
-          A fake / hidden checkbox is used as click reciever,
-          so you can use the :checked selector on it.
-          -->
-          <input type="checkbox" />
-          <span></span>
-          <span></span>
-          <span></span>
-          <!--
-          Too bad the menu has to be inside of the button
-          but hey, it's pure CSS magic.
-          -->
-          <ul id="menu">
-            <a href="home.html"><li>Home</li></a>
-            <a href="suggestions.html"><li>Spending Suggestions</li></a>
-            <a href="locations.html"><li>Locations & Availability</li></a>
-            <a href="settings.html"><li>Settings</li></a>
-          </ul>
-        </div>
-      </nav>
-      <center>
-        <h1>Spending Suggestions</h1>
-      </center>
-    </div>
-  </header>
-  <body>
-    <button class="collapsible">Item Set 1</button>
-    <div class="content">
-      <p></p>
-      <p>ABCDEFG</p>
-    </div>
-    <script>
-      var coll = document.getElementsByClassName("collapsible");
-      for (var i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          var content = this.nextElementSibling;
-          if (content.style.maxHeight){
-            content.style.maxHeight = null;
-          } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-          }
-        });
-      }
-    </script>
-  </body>
+  <button class="collapsible">Item Set 1</button>
+  <div class="content">
+    <p></p>
+    <p>ABCDEFG</p>
+  </div>
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
 </html>

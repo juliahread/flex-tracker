@@ -1,0 +1,38 @@
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="../static/css/main.css" rel="stylesheet" type="text/css">
+    <header>
+      <div class="jumbotron" height="300px">
+        <nav role="navigation">
+          <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+              <a href="/main"><li>Home</li></a>
+              <a href="/suggestions"><li>Spending Suggestions</li></a>
+              <a href="/locations"><li>Locations & Availability</li></a>
+              <a href="/settings"><li>Settings</li></a>
+              <a href="{% url 'logout' %}"><li>Logout</li></a>
+            </ul>
+          </div>
+        </nav>
+          <center>
+              <h1>{{title}}</h1>
+          </center>
+        </div>
+    </header>
+    {% ifequal title 'Flex Tracker' %}
+      {% include "home.html" with balance=balance daysLeft=daysLeft %}
+    {% endifequal %}
+    {% ifequal title 'Spending Suggestions' %}
+      {% include "suggestions.html" %}
+    {% endifequal %}
+    {% ifequal title 'Locations & Availability' %}
+      {% include "locations.html" %}
+    {% endifequal %}
+    {% ifequal title 'Settings' %}
+      {% include "settings.html" %}
+    {% endifequal %}
+</html>

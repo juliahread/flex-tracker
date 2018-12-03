@@ -16,19 +16,33 @@ def home(request):
     if request.user.is_authenticated:
         context = {}
         try:
+            context['title'] = 'Flex Tracker'
             context['balance'] = "%.2f" % flex_info.objects.get(user_id=request.user.id).current_flex
             context['daysLeft'] = (5 - date.today().weekday()) % 7
-            return render(request, "home.html", context)
+            return render(request, "main.html", context)
         except:
             return render(request, "tutorial.html", context)
     else:
         return redirect('login')
 
+def suggestions(request):
+    if request.user.is_authenticated:
+        context = {}
+        context['title'] = 'Spending Suggestions'
+        return render(request, "main.html", context)
+
+def locations(request):
+    if request.user.is_authenticated:
+        context = {}
+        context['title'] = 'Locations & Availability'
+        return render(request, "main.html", context)
+
 def settings(request):
     if request.user.is_authenticated:
         context = {}
+        context['title'] = 'Settings'
         context['sendEmails'] = flex_info.objects.get(user_id=request.user.id).email_notification
         context['sendTexts'] = flex_info.objects.get(user_id=request.user.id).text_notification
-        return render(request, "settings.html", context)
+        return render(request, "main.html", context)
     else:
         raise PermissionDenied

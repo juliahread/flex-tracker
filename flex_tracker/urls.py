@@ -19,6 +19,10 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('', include('flex_backend.urls')),
+<<<<<<< HEAD
     path('home/', TemplateView.as_view(template_name='home.html'), name='home'),
     path('tutorial/', TemplateView.as_view(template_name='tutorial.html'), name='tutorial'),
+=======
+    path('main/', TemplateView.as_view(template_name='main.html'), name='main'),
+>>>>>>> b17b1302a4f93fe88bbef004e93edc9bbb4606bf
 ]
