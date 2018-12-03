@@ -15,13 +15,14 @@ def index(request):
 def home(request):
     if request.user.is_authenticated:
         context = {}
+        context['title'] = 'Flex Tracker'
+        context['daysLeft'] = (5 - date.today().weekday()) % 7
         try:
-            context['title'] = 'Flex Tracker'
             context['balance'] = "%.2f" % flex_info.objects.get(user_id=request.user.id).current_flex
-            context['daysLeft'] = (5 - date.today().weekday()) % 7
             return render(request, "main.html", context)
         except:
-            return render(request, "tutorial.html", context)
+            context['balance'] = -1
+            return render(request, "main.html", context)
     else:
         return redirect('login')
 
