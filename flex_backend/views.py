@@ -42,8 +42,12 @@ def settings(request):
     if request.user.is_authenticated:
         context = {}
         context['title'] = 'Settings'
-        context['sendEmails'] = flex_info.objects.get(user_id=request.user.id).email_notification
-        context['sendTexts'] = flex_info.objects.get(user_id=request.user.id).text_notification
+        try:
+            context['sendEmails'] = flex_info.objects.get(user_id=request.user.id).email_notification
+            context['sendTexts'] = flex_info.objects.get(user_id=request.user.id).text_notification
+        except:
+            context['sendEmails'] = None
+            context['sendTexts'] = None
         return render(request, "main.html", context)
     else:
         raise PermissionDenied
