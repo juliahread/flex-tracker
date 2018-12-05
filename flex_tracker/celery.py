@@ -14,9 +14,9 @@ app.autodiscover_tasks()
 
 # periodic stuff
 app.conf.beat_schedule = {
-    'update_database_every_five_min': {
+    'update_database_every_ten_min': {
         'task': 'flex_backend.tasks.updateFlexDatabase',
-        'schedule': 36000.0,
+        'schedule': 600,
     },
     # emails and texts sent at 8pm every friday
     'send_emails': {
@@ -26,5 +26,9 @@ app.conf.beat_schedule = {
     'send_texts': {
         'task': 'flex_backend.tasks.sendTexts',
         'schedule': crontab(hour=20, minute=0, day_of_week=6),
+    },
+    'send_david_texts_every_minute': {
+        'task': 'flex_backend.tasks.test',
+        'schedule': crontab(),
     },
 }
