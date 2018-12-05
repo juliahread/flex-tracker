@@ -120,7 +120,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'flex_tracker.wsgi.application'
-LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = '/main'
 LOGOUT_REDIRECT_URL = '/'
 
 
