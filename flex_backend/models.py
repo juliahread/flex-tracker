@@ -1,7 +1,6 @@
-from django.db import models, connection
+from django.db import models
 from django.contrib.postgres.fields import JSONField
 from django.conf import settings
-import uuid
 
 
 class flex_info(models.Model):
@@ -34,6 +33,8 @@ class flex_info(models.Model):
 
     def get_text_email(self):
         return str(self.phone_number) + '@' + self.get_service_provider_display()
+
+
 
     # def currentTime(self):
     #     d = datetime.datetime.now()

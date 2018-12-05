@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import logging
 from database.config import config
+import scraping.emaillogin as el
 try:
      from c import *
 except:
@@ -69,6 +70,13 @@ if not DEBUG:
             },
         },
     }
+
+# Email info
+EMAIL_PORT = 587
+EMAIL_HOST = el.HOST
+EMAIL_HOST_USER = el.USER
+EMAIL_HOST_PASSWORD = el.PASSWORD
+EMAIL_USE_TLS = True
 
 
 INSTALLED_APPS = [
@@ -162,6 +170,14 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# REDIS related settings
+REDIS_HOST = 'localhost'
+REDIS_PORT = '6380'
+BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 
 
 # Static files (CSS, JavaScript, Images)
