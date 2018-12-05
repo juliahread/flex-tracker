@@ -80,7 +80,6 @@ EMAIL_USE_TLS = True
 
 
 INSTALLED_APPS = [
-    'background_task',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -171,6 +170,14 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# REDIS related settings
+REDIS_HOST = 'localhost'
+REDIS_PORT = '6380'
+BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 
 
 # Static files (CSS, JavaScript, Images)

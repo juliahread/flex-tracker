@@ -1,4 +1,8 @@
-from background_task import background
+# main/tasks.py
+
+import logging
+
+from flex_tracker.celery import app
 from scraping.flexscrapper import FlexScrapper
 from django.contrib.auth.models import User
 from flex_backend.models import flex_info
@@ -13,23 +17,30 @@ The team of students who labored on this for 121"
 
 textText = "You have %.2f flex dollars left for this week."
 
-@background
-def updateFlexForUser(userId, userToken):
-    '''To call:
-        from background_task.models import Task
-        updateFlexForUser(userId, access_key, repeat=Task.HOURLY/6,
-            repeat_until=enddate)'''
-    FlexScrapper(userId, userToken).getCSVAndUpdateFlex()
+# initialize logger
+logger = logging.getLogger(__name__)
 
-@background
-def sendEmailToUser(userId):
-    user = User.objects.get(pk=userId)
-    flex = flex_info.objects.get(user_id=userId)
-    user.email_user('Flex Notification', emailText % (user.first_name,
-        flex.current_flex))
+@app.task
+def updateFlexDatabase():
+    for fl in flex_info.objects.exclude(access_key=""):
+        try:
+            FlexScrapper(fl.user_id, fl.access_key).getCSVAndUpdateFlex()
+        except:
+            logger.error("Unable to update flex for User_id = '%d'" % fl.user_id)
 
-@background
-def sendTextToUser(userId):
-    flex = flex_info.objects.get(user_id=userId)
-    send_mail('Weekly Flex Reminder', textText % flex.current_flex,
-        EMAIL_HOST_USER, [flex.get_text_email()])
+
+@app.task
+def sendEmails():
+    for fl in flex_info.objects.exclude(email_notification=False):
+        user = User.objects.get(id=fl.user_id)
+        user.email_user('Flex Notification', emailText % (user.first_name,
+            fl.current_flex))
+
+@app.task
+def sendTexts():
+    for fl in flex_info.objects.exclude(text_notification=False):
+        if fl.service_provider != 'UNKNOWN':
+            send_mail('Weekly Flex Reminder', textText % fl.current_flex,
+                EMAIL_HOST_USER, [fl.get_text_email()])
+        else:
+            logger.warning("Provider not provided for User_id = '%d'" % fl.user_id)

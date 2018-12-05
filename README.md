@@ -77,6 +77,7 @@ contain login information.
 ## Notes
 - Everything under the Database directory was adapted from
 [here](http://www.postgresqltutorial.com/postgresql-python/connect/).
+- Celery and Redis information [here](https://docs.google.com/document/d/1d7jsfahV0ymGrp6Za8VNHfqr_WqIrsu8vWIM_eRApNg/edit?usp=sharing).
 - Some python libraries you might need to download to run this code:
   - easyimap
   - psycopg2
