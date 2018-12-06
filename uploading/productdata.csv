@@ -1,0 +1,156 @@
+Place,Type,Item,Cost
+Hoch,Meal,Breakfast,4.25
+Hoch,Meal,Brunch/Lunch,5.25
+Hoch,Meal,Dinner,6.75
+Jay's,Cold drink,Pepsi,1.7
+Jay's,Cold drink,Aquafina,1.7
+Jay's,Cold drink,Mountain Dew,1.7
+Jay's,Cold drink,Gatorade,1.95
+Jay's,Cold drink,Cold Brew,3.85
+Jay's,Cold drink,Pure Leaf,2.2
+Jay's,Cold drink,Brisk,1.7
+Jay's,Cold drink,DoubleShot,2.7
+Jay's,Cold drink,Refresher,2.7
+Jay's,Cold drink,RockStar,2.7
+Jay's,Cold drink,Coca Cola,1.7
+Jay's,Cold drink,Monster,2.7
+Jay's,Cold drink,Diet Coke,1.7
+Jay's,Cold drink,Sprite,1.7
+Jay's,Cold drink,Golden Peak,2.5
+Jay's,Cold drink,Dr Pepper,1.7
+Jay's,Cold drink,Apple Juice,2.15
+Jay's,Cold drink,Powerade,1.95
+Jay's,Cold drink,Vitamin Water,1.95
+Jay's,Cold drink,SmartWater,1.7
+Jay's,Cold drink,Lime soda,1.75
+Jay's,Cold drink,Root beer,1.75
+Jay's,Cold drink,Orangina,1.95
+Jay's,Cold drink,Orange soda,1.75
+Jay's,Cold drink,Cream soda,1.75
+Jay's,Cold drink,Coconut water,2.45
+Jay's,Cold drink,Snapple,1.85
+Jay's,Cold drink,Bai,2.45
+Jay's,Cold drink,Arizona,0.99
+Jay's,Cold drink,LifeWTR,2.45
+Jay's,Cold drink,High Brew,2.6
+Jay's,Ice cream,Drumstick,2.2
+Jay's,Ice cream,Dibs,3.5
+Jay's,Ice cream,Ice cream sandwich,1.8
+Jay's,Ice cream,Popsicle,2.7
+Jay's,Cold food,PB&J,2.4
+Jay's,Cold food,Turkey&Cheddar,3.8
+Jay's,Cold food,Parfait,2.7
+Jay's,Cold food,Fruit cup,2.9
+Jay's,Cold food,Ham&Cheddar,3.8
+Jay's,Cold food,Pita&Hummus,2.9
+Jay's,Chips,Cheese Doritos,1.15
+Jay's,Chips,Ranch Doritos,1.15
+Jay's,Chips,Jalapeno Miss Vickis,1.15
+Jay's,Chips,Salt&Vinegar Miss Vickis,1.15
+Jay's,Chips,BBQ Miss Vickis,1.15
+Jay's,Chips,BBQ Lays,1.15
+Jay's,Chips,Classic Lays,1.15
+Jay's,Chips,Garden Sun Chips,1.15
+Jay's,Chips,Original Cheezits,1.8
+Jay's,Chips,Cheddar Jack Cheezits,1.8
+Jay's,Chips,White Cheddar Cheezits,1.8
+Jay's,Chips,Spicy Cheezits,1.8
+Jay's,Chips,Bold Chex Mix,1.8
+Jay's,Chips,Cheddar Chex Mix,1.8
+Jay's,Chips,Spicy Chex Mix,1.8
+Jay's,Chips,Traditional Chex Mix,1.8
+Jay's,Chips,Turtle Chex Mix,1.8
+Jay's,Chips,Jalapeno Chex Mix,1.8
+Jay's,Candy,Trolli Blasts,1.8
+Jay's,Candy,Trolli Squiggles,1.8
+Jay's,Candy,Trolli Apple Os,1.8
+Jay's,Candy,Trolli Crawlers,1.8
+Jay's,Candy,Trolli Eggs,1.8
+Jay's,Candy,Trolli Beards,1.8
+Jay's,Fruit,Banana,1
+Jay's,Other Food,Cookie,1.05
+Jay's,Hot or iced drink,Caffe Latte (S),2.55
+Jay's,Hot or iced drink,Caffe Latte (M),3.05
+Jay's,Hot or iced drink,Caffe Latte (L),3.4
+Jay's,Hot or iced drink,Cappuccino (S),2.55
+Jay's,Hot or iced drink,Cappuccino (M),3.05
+Jay's,Hot or iced drink,Cappuccino (L),3.4
+Jay's,Hot or iced drink,Caffe Mocha (S),2.9
+Jay's,Hot or iced drink,Caffe Mocha (M),3.4
+Jay's,Hot or iced drink,Caffe Mocha (L),3.8
+Jay's,Hot or iced drink,Vanilla Latte (S),3.05
+Jay's,Hot or iced drink,Vanilla Latte (M),3.55
+Jay's,Hot or iced drink,Vanilla Latte (L),3.9
+Jay's,Hot or iced drink,Caramel Macchiato (S),3.15
+Jay's,Hot or iced drink,Caramel Macchiato (M),3.65
+Jay's,Hot or iced drink,Caramel Macchiato (L),3.95
+Jay's,Hot or iced drink,White Chocolate Mocha (S),3.15
+Jay's,Hot or iced drink,White Chocolate Mocha (M),3.55
+Jay's,Hot or iced drink,White Chocolate Mocha (L),3.95
+Jay's,Hot or iced drink,Caffe Americano (S),1.8
+Jay's,Hot or iced drink,Caffe Americano (M),2.2
+Jay's,Hot or iced drink,Caffe Americano (L),2.6
+Jay's,Hot or iced drink,Espresso (Single),1.65
+Jay's,Hot or iced drink,Espresso (Double),1.75
+Jay's,Coffee and Tea,Coffee (S),1.55
+Jay's,Coffee and Tea,Coffee (M),1.8
+Jay's,Coffee and Tea,Coffee (L),1.95
+Jay's,Coffee and Tea,Caffe Misto (S),1.55
+Jay's,Coffee and Tea,Caffe Misto (M),1.8
+Jay's,Coffee and Tea,Caffe Misto (L),1.95
+Jay's,Coffee and Tea,Chai Tea Latte (S),2.75
+Jay's,Coffee and Tea,Chai Tea Latte (M),3.15
+Jay's,Coffee and Tea,Chai Tea Latte (L),3.4
+Jay's,Coffee and Tea,Tazo Tea (S),1.8
+Jay's,Coffee and Tea,Tazo Tea (M),1.95
+Jay's,Coffee and Tea,Tazo Tea (L),2.15
+Jay's,Blended drink,Strawberry Smoothie,3.95
+Jay's,Blended drink,Mango Smoothie,3.95
+Jay's,Blended drink,Strawberry Peach Smoothie,3.85
+Jay's,Blended drink,Raspberry Mango Smoothie,3.85
+Jay's,Iced Coffee and Tea,Iced Coffee (S),1.8
+Jay's,Iced Coffee and Tea,Iced Coffee (M),2.2
+Jay's,Iced Coffee and Tea,Iced Coffee (L),2.6
+Jay's,Iced Coffee and Tea,Cold Brew (S),2.2
+Jay's,Iced Coffee and Tea,Cold Brew (M),2.6
+Jay's,Iced Coffee and Tea,Cold Brew (L),3.1
+Jay's,Iced Coffee and Tea,Iced Tea (S),1.55
+Jay's,Iced Coffee and Tea,Iced Tea (M),1.95
+Jay's,Iced Coffee and Tea,Iced Tea (L),2.35
+Jay's,Iced Coffee and Tea,Iced Tea Lemonade (S),2.2
+Jay's,Iced Coffee and Tea,Iced Tea Lemonade (M),2.6
+Jay's,Iced Coffee and Tea,Iced Tea Lemonade (L),3.1
+Jay's,Iced Coffee and Tea,Iced Peachy Green (S),1.55
+Jay's,Iced Coffee and Tea,Iced Peachy Green (M),1.95
+Jay's,Iced Coffee and Tea,Iced Peachy Green (L),2.35
+Jay's,Hot drinks,Hot chocolate,2.15
+Jay's,Hot drinks,White hot chocolate (S),2.15
+Jay's,Hot drinks,White hot chocolate (M),3.15
+Jay's,Hot drinks,White hot chocolate (L),3.4
+Jay's,Hot drinks,Steamer (S),2.15
+Jay's,Hot drinks,Steamer (M),3.15
+Jay's,Hot drinks,Steamer (L),3.4
+Jay's,Frappuccino,Coffee (S),2.75
+Jay's,Frappuccino,Coffee (M),3.15
+Jay's,Frappuccino,Coffee (L),3.55
+Jay's,Frappuccino,Caramel (S),3.25
+Jay's,Frappuccino,Caramel (M),3.8
+Jay's,Frappuccino,Caramel (L),4.25
+Jay's,Frappuccino,Mocha (S),3.25
+Jay's,Frappuccino,Mocha (M),3.8
+Jay's,Frappuccino,Mocha (L),4.25
+Jay's,Frappuccino,Java Chip (S),3.25
+Jay's,Frappuccino,Java Chip (M),3.8
+Jay's,Frappuccino,Java Chip (L),4.25
+Jay's,Frappuccino,White Chocolate Mocha (S),3.25
+Jay's,Frappuccino,White Chocolate Mocha (M),3.8
+Jay's,Frappuccino,White Chocolate Mocha (L),4.25
+Jay's,Frappuccino,Vanilla Bean Creme (S),2.75
+Jay's,Frappuccino,Vanilla Bean Creme (M),3.15
+Jay's,Frappuccino,Vanilla Bean Creme (L),3.55
+Jay's,Frappuccino,Strawberries and Creme (S),3.25
+Jay's,Frappuccino,Strawberries and Creme (M),3.8
+Jay's,Frappuccino,Strawberries and Creme (L),4.25
+Jay's,Frappuccino,Double Chocolaty Chip (S),3.25
+Jay's,Frappuccino,Double Chocolaty Chip (M),3.8
+Jay's,Frappuccino,Double Chocolaty Chip (L),4.25

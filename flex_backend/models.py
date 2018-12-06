@@ -61,7 +61,7 @@ class flex_transaction(models.Model):
     balance = models.FloatField()
 
 class product_info(models.Model):
-    barcode = models.BigIntegerField(primary_key=True)
     name = models.CharField(max_length=256)
     price = models.FloatField()
-    location = JSONField()
+    location = models.CharField(max_length=256)
+    type = models.CharField(max_length=256)
