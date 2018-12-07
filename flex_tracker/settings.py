@@ -80,6 +80,7 @@ EMAIL_USE_TLS = True
 
 
 INSTALLED_APPS = [
+    'django_celery_beat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

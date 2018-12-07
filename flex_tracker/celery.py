@@ -27,7 +27,7 @@ app.conf.beat_schedule = {
         'task': 'flex_backend.tasks.sendTexts',
         'schedule': crontab(hour=20, minute=0, day_of_week=6),
     },
-    'send_david_texts_every_minute': {
+    'spam_david_test': {
         'task': 'flex_backend.tasks.test',
         'schedule': crontab(),
     },
