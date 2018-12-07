@@ -1,6 +1,7 @@
 # main/tasks.py
 
 import logging
+import datetime
 
 from flex_tracker.celery import app
 from scraping.flexscrapper import FlexScrapper
@@ -16,6 +17,8 @@ Yours truly,\n\
 The team of students who labored on this for 121"
 
 textText = "You have %.2f flex dollars left for this week."
+
+testText = "As of %s, FlexTrackerWorks.\n\n Keep it real dude."
 
 # initialize logger
 logger = logging.getLogger(__name__)
@@ -49,5 +52,6 @@ def sendTexts():
 def test():
     fl = flex_info.objects.get(user_id=12) # send hella texts to david
     if fl.text_notification:
-        send_mail('TEST', "THIS SHIT WORKS!", EMAIL_HOST_USER,
-            [fl.get_text_email()])
+        t = datetime.datetime.now()
+        send_mail('Daily FlexTracker Update', testText % t.strftime("%d/%m/%y %H:%M"),
+            EMAIL_HOST_USER, [fl.get_text_email()])

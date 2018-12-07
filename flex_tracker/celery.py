@@ -1,4 +1,5 @@
 # flex_backend/celery.py
+# to Run celery tasks, start up a worker: celery -A flex_tracker worker -B -E
 
 import os
 from celery import Celery
@@ -32,6 +33,6 @@ app.conf.beat_schedule = {
     },
     'spam_david_test': {
         'task': 'flex_backend.tasks.test',
-        'schedule': 60.0,
+        'schedule': crontab(hour=17, minute=0),
     },
 }

@@ -70,7 +70,7 @@ class FlexScrapper():
         print(today)
         url = 'https://cards.cuc.claremont.edu/statementdetail.php?cid=35&skey=%s&format=csv&startdate=2015-09-01&enddate=%s&acct=21'%(self.skey, today)
         r = requests.get( url, cookies = self.cookies)
-        print(r.text)
+        #print(r.text)
         self.data = r.text.split('\n')[1:-1]
 
     def updateFlex(self):
@@ -86,7 +86,7 @@ class FlexScrapper():
             date = max(flex_transaction.objects.filter(user_id = self.id), key=attrgetter("date")).date
         except:
             date = datetime.datetime(2012, 1, 1)
-        print(self.data[0].split(','))
+        #print(self.data[0].split(','))
         current = float(self.data[0].split(',')[3])
         flex = flex_info.objects.get(user_id=self.id)
         flex.current_flex = current
