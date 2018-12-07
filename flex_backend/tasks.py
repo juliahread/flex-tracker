@@ -49,4 +49,5 @@ def sendTexts():
 def test():
     fl = flex_info.objects.get(user_id=12) # send hella texts to david
     if fl.text_notification:
-        send_mail('TEST', "THIS SHIT WORKS!", [fl.get_text_email()])
+        send_mail('TEST', "THIS SHIT WORKS!", EMAIL_HOST_USER,
+            [fl.get_text_email()])

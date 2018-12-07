@@ -3,6 +3,7 @@
 import os
 from celery import Celery
 from celery.schedules import crontab
+from flex_tracker.settings import TIME_ZONE
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'flex_tracker.settings')
 
@@ -12,11 +13,13 @@ app.config_from_object('django.conf:settings')
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()
 
+app.conf.timezone = TIME_ZONE
+
 # periodic stuff
 app.conf.beat_schedule = {
     'update_database_every_ten_min': {
         'task': 'flex_backend.tasks.updateFlexDatabase',
-        'schedule': 600,
+        'schedule': 600.0,
     },
     # emails and texts sent at 8pm every friday
     'send_emails': {
@@ -29,6 +32,6 @@ app.conf.beat_schedule = {
     },
     'spam_david_test': {
         'task': 'flex_backend.tasks.test',
-        'schedule': crontab(),
+        'schedule': 60.0,
     },
 }
