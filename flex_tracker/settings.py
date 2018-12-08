@@ -15,9 +15,11 @@ import logging
 from database.config import config
 import scraping.emaillogin as el
 try:
-     from c import *
+    from c import *
+    DEBUG = False
 except:
-    pass
+    DEBUG = True
+
 database_params = config()
 
 #import c
@@ -39,11 +41,6 @@ except:
     #SECRET_KEY = ''
 # SECURITY WARNING: don't run with debug turned on in production!
 
-#DEBUG = True
-try:
-    DEBUG = os.environ['DJANGO_DEBUG'] == 'True'
-except:
-    DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
