@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <center>
+      <h1>Change Password</h1>
+        <form action="/action_page.php">
+          <input type="password" name="old" placeholder="Old Password"><br>
+          <input type="password" name="new" placeholder="New Password"><br>
+          <input type="password" name="confirm" placeholder="Confirm New Password"><br>
+          <input type="submit" value="Submit">
+        </form>
+      <h1>Change Email Preferences</h1>
+      <form action="/action_page.php">
+
+        <input type="checkbox" name="sendEmails" value="send"
+          {% if sendEmails %}
+            checked
+          {% endif %}
+        >Send me email notifications.<br>
+        <input type="checkbox" name="sendTexts" value="send"
+        {% if sendTexts %}
+          checked
+        {% endif %}
+        >Send me text notifications.<br>
+          <h2>Change email</h2>
+          <input type="text" name="current" placeholder="Current Email"><br>
+          <input type="text" name="new" placeholder="New Email"><br>
+          <input type="submit" value="Change!">
+      </form>
+    </center>
+  </body>
+</html>
