@@ -1,6 +1,8 @@
 # flex_backend/celery.py
 # to Run celery tasks, start up a worker: celery -A flex_tracker worker -B -E
 
+from __future__ import absolute_import, unicode_literals
+
 import os
 from celery import Celery
 from celery.schedules import crontab
