@@ -41,13 +41,4 @@ class Migration(migrations.Migration):
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
-        migrations.CreateModel(
-            name='product_info',
-            fields=[
-                ('barcode', models.BigIntegerField(primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=256)),
-                ('price', models.FloatField()),
-                ('location', django.contrib.postgres.fields.jsonb.JSONField()),
-            ],
-        ),
     ]
