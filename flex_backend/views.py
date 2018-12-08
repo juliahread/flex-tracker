@@ -5,7 +5,7 @@ from django.template import Context, loader
 from django.core.exceptions import PermissionDenied
 from flex_backend.models import flex_info
 from datetime import date
-from accounts.models import SignUpForm
+from accounts.forms import SignUpForm
 from django.contrib.auth.models import User
 
 #TODO: Comments!
