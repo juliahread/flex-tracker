@@ -1,6 +1,6 @@
 # main/tasks.py
 
-# import logging
+import logging
 import datetime
 
 from flex_tracker.celery import app
@@ -21,7 +21,7 @@ textText = "You have %.2f flex dollars left for this week."
 testText = "As of %s, FlexTrackerWorks.\n\n Keep it real dude."
 
 # initialize logger
-# logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 @app.task
 def updateFlexDatabase():
@@ -29,8 +29,7 @@ def updateFlexDatabase():
         try:
             FlexScrapper(fl.user_id, fl.access_key).getCSVAndUpdateFlex()
         except:
-            # logger.error("Unable to update flex for User_id = '%d'" % fl.user_id)
-            pass
+            logger.error("Unable to update flex for User_id = '%d'" % fl.user_id)
 
 
 @app.task
@@ -47,8 +46,7 @@ def sendTexts():
             send_mail('Weekly Flex Reminder', textText % fl.current_flex,
                 EMAIL_HOST_USER, [fl.get_text_email()])
         else:
-            # logger.warning("Provider not provided for User_id = '%d'" % fl.user_id)
-            pass
+            logger.warning("Provider not provided for User_id = '%d'" % fl.user_id)
 
 @app.task
 def test():
