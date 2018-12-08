@@ -16,8 +16,6 @@ app.config_from_object('django.conf:settings')
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()
 
-app.conf.update({'worker_hijack_root_logger': False})
-
 app.conf.timezone = TIME_ZONE
 
 # periodic stuff
