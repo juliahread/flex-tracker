@@ -1,6 +1,6 @@
 # main/tasks.py
 
-import logging
+from celery.utils.log import get_task_logger
 import datetime
 
 from flex_tracker.celery import app
@@ -21,7 +21,7 @@ textText = "You have %.2f flex dollars left for this week."
 testText = "As of %s, FlexTrackerWorks.\n\n Keep it real dude."
 
 # initialize logger
-logger = logging.getLogger(__name__)
+logger = logger = get_task_logger(__name__)
 
 @app.task
 def updateFlexDatabase():
