@@ -1,7 +1,6 @@
-from django.db import models, connection
+from django.db import models
 from django.contrib.postgres.fields import JSONField
 from django.conf import settings
-import uuid
 
 
 class flex_info(models.Model):
@@ -35,6 +34,8 @@ class flex_info(models.Model):
     def get_text_email(self):
         return str(self.phone_number) + '@' + self.get_service_provider_display()
 
+
+
     # def currentTime(self):
     #     d = datetime.datetime.now()
     #     return datetime.datetime(d.year, d.month, d.day, d.hour, d.minute).isoformat()
@@ -60,7 +61,7 @@ class flex_transaction(models.Model):
     balance = models.FloatField()
 
 class product_info(models.Model):
-    barcode = models.BigIntegerField(primary_key=True)
     name = models.CharField(max_length=256)
     price = models.FloatField()
-    location = JSONField()
+    location = models.CharField(max_length=256)
+    type = models.CharField(max_length=256)
