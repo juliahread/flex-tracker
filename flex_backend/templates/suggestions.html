@@ -1,10 +1,18 @@
 <html>
   <link href="../static/css/suggestions.css" rel="stylesheet" type="text/css">
-  <button class="collapsible">Item Set 1</button>
-  <div class="content">
-    <p></p>
-    <p>ABCDEFG</p>
-  </div>
+  {% if suggestions %}
+    {% for item in suggestions %}
+      <button style="margin-bottom :5px"class="collapsible">Item Set {{ forloop.counter }}</button>
+      <div class="content">
+        <p></p>
+        {% for key, value in item.items%}
+        <p>{{key}}, Price: {{value}}</p>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <br>
+  {% endif %}
+  {{error}}
   <script>
     var coll = document.getElementsByClassName("collapsible");
     for (var i = 0; i < coll.length; i++) {

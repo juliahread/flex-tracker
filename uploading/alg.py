@@ -1,8 +1,12 @@
 import random
 import csv
+import operator
+
+productTable = {}
+items = []
 
 def populate_products_database():
-    with open('flexdata.csv') as csv_file:
+    with open('uploading/flexdata.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             name = row[2]
@@ -14,6 +18,7 @@ def populate_products_database():
             items.append(newRow)
             
 def optimize(flexAmount):
+    populate_products_database()
     flexAmount = int(flexAmount*20)
     numItems = len(items)
 
@@ -41,19 +46,22 @@ def optimize(flexAmount):
 
     # reconstruct solution
     currentCol = flexAmount
-    flexLeft = flexAmount
+    flexLeft = flexAmount/20
     listOfSuggestions = {}
 
     for itemSet in range(len(dpTable)-1, -1, -1):
         newCol = parentTable[itemSet][currentCol]
-    
         if not (newCol == currentCol):
-            flexLeft = flexLeft - items[itemSet-1][1]
-            if flexLeft >= 0:
-                listOfSuggestions[items[itemSet-1][0]] = items[itemSet-1][1]
-            else:
-                return listOfSuggestions
-
-        # print(items[itemSet-1][0])
+            listOfSuggestions[items[itemSet-1][0]] = items[itemSet-1][1]
         currentCol = newCol
-    return listOfSuggestions
+
+    sorted_x = sorted(listOfSuggestions.items(), key=operator.itemgetter(1))
+    newList = {}
+    for item in listOfSuggestions:
+        price = listOfSuggestions[item]
+        if flexLeft >= 0:
+            newList[item] = price
+            flexLeft = flexLeft-price
+        else:
+            return newList
+    return newList
