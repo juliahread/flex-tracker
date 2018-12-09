@@ -60,7 +60,7 @@ def optimize(flexAmount):
     for item in listOfSuggestions:
         price = listOfSuggestions[item]
         if flexLeft >= 0:
-            newList[item] = price
+            newList[item] = str(price) + ' Location: ' + productTable[item][0] + ' Product Type: ' + productTable[item][1] 
             flexLeft = flexLeft-price
         else:
             return newList
