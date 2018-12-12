@@ -36,13 +36,13 @@ def suggestions(request):
         try:
             flex_amount = flex_info.objects.get(user_id=request.user.id).current_flex
             suggestions_list = []
-            suggestions_list.append(optimize(flex_amount))  
-            suggestions_list.append(optimize(flex_amount))  
-            suggestions_list.append(optimize(flex_amount))  
+            suggestions_list.append(optimize(flex_amount))
+            suggestions_list.append(optimize(flex_amount))
+            suggestions_list.append(optimize(flex_amount))
             context['suggestions'] = suggestions_list
-        except Exception as e: 
+        except Exception as e:
             print(e)
-            context['error'] = ['No flex information found']
+            context['error'] = 'No flex information found'
         return render(request, "main.html", context)
     else:
         return redirect('login')
@@ -83,7 +83,7 @@ def settings(request):
                     user = User.objects.get(username=request.user.username)
                     user.email = data['new']
 
-                
+
 
         context = {}
         context['title'] = 'Settings'
