@@ -6,7 +6,9 @@ from django.core.exceptions import PermissionDenied
 from flex_backend.models import flex_info
 from datetime import date
 from accounts.forms import SignUpForm
+from uploading.alg import *
 from django.contrib.auth.models import User
+
 
 #TODO: Comments!
 def index(request):
@@ -31,7 +33,19 @@ def suggestions(request):
     if request.user.is_authenticated:
         context = {}
         context['title'] = 'Spending Suggestions'
+        try:
+            flex_amount = flex_info.objects.get(user_id=request.user.id).current_flex
+            suggestions_list = []
+            suggestions_list.append(optimize(flex_amount))  
+            suggestions_list.append(optimize(flex_amount))  
+            suggestions_list.append(optimize(flex_amount))  
+            context['suggestions'] = suggestions_list
+        except Exception as e: 
+            print(e)
+            context['error'] = ['No flex information found']
         return render(request, "main.html", context)
+    else:
+        return redirect('login')
 
 def locations(request):
     if request.user.is_authenticated:
