@@ -18,13 +18,14 @@ def index(request):
 def home(request):
     if request.user.is_authenticated:
         context = {}
+        context['title'] = 'Flex Tracker'
+        context['daysLeft'] = (5 - date.today().weekday()) % 7
         try:
-            context['title'] = 'Flex Tracker'
             context['balance'] = "%.2f" % flex_info.objects.get(user_id=request.user.id).current_flex
-            context['daysLeft'] = (5 - date.today().weekday()) % 7
             return render(request, "main.html", context)
         except:
-            return render(request, "error.html", context)
+            context['balance'] = -1
+            return render(request, "main.html", context)
     else:
         return redirect('login')
 
@@ -35,13 +36,13 @@ def suggestions(request):
         try:
             flex_amount = flex_info.objects.get(user_id=request.user.id).current_flex
             suggestions_list = []
-            suggestions_list.append(optimize(flex_amount))  
-            suggestions_list.append(optimize(flex_amount))  
-            suggestions_list.append(optimize(flex_amount))  
+            suggestions_list.append(optimize(flex_amount))
+            suggestions_list.append(optimize(flex_amount))
+            suggestions_list.append(optimize(flex_amount))
             context['suggestions'] = suggestions_list
-        except Exception as e: 
+        except Exception as e:
             print(e)
-            context['error'] = ['No flex information found']
+            context['error'] = 'No flex information found'
         return render(request, "main.html", context)
     else:
         return redirect('login')
@@ -82,12 +83,16 @@ def settings(request):
                     user = User.objects.get(username=request.user.username)
                     user.email = data['new']
 
-                
+
 
         context = {}
         context['title'] = 'Settings'
-        context['sendEmails'] = flex_info.objects.get(user_id=request.user.id).email_notification
-        context['sendTexts'] = flex_info.objects.get(user_id=request.user.id).text_notification
+        try:
+            context['sendEmails'] = flex_info.objects.get(user_id=request.user.id).email_notification
+            context['sendTexts'] = flex_info.objects.get(user_id=request.user.id).text_notification
+        except:
+            context['sendEmails'] = None
+            context['sendTexts'] = None
         return render(request, "main.html", context)
     else:
         raise PermissionDenied

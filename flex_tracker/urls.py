@@ -20,4 +20,5 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('', include('flex_backend.urls')),
     #path('home/', TemplateView.as_view(template_name='main.html'), name='home'),
+    path('tutorial/', TemplateView.as_view(template_name='tutorial.html'), name='tutorial'),
 ]

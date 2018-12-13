@@ -33,6 +33,6 @@
       {% include "locations.html" %}
     {% endifequal %}
     {% ifequal title 'Settings' %}
-      {% include "settings.html" %}
+      {% include "settings.html" with sendEmails=sendEmails sendTexts=sendTexts%}
     {% endifequal %}
 </html>

@@ -11,7 +11,7 @@ def SignUp(request):
             user.refresh_from_db()
             user.phone_number = form.cleaned_data.get("phone_number")
             user.provider = form.cleaned_data.get("provider")
-            user.save()            
+            user.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)

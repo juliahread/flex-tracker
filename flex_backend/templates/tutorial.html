@@ -1,0 +1,31 @@
+<html>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="../../static/css/home.css" rel="stylesheet" type="text/css">
+  {% load staticfiles %}
+  <h2>&nbsp;If you're seeing this page, we probably do not have access your flex information.</h2>
+  <ol>
+    <li>Go to the Claremont Cards <a href="http://cards.cuc.claremont.edu">website.
+    </a></li>
+    <img src={% static 'images/tutorial/1.png' %}><br />
+    <br />
+    <li>Log into your account.</li>
+    <img src="{% static 'images/tutorial/2.png' %}"><br />
+    <br />
+    <li>You should see the following screen after logging in. On the bottom
+    left, click on the a menu item under "My Account" named "Grant additional
+    access".</li>
+    <img src={% static 'images/tutorial/3.png' %}><br />
+    <br />
+    <li>The page should look like this:</li>
+    <img src={% static 'images/tutorial/4.png' %}><br />
+    <br />
+    <li>Add muddflextracker@gmail.com as a user that can view your statements,
+      have guess access, and view balances.</li>
+    <img src={% static 'images/tutorial/5.png' %}><br />
+    <br />
+    <li>Confirm that muddflextracker@gmail.com has been added as a new user with
+    the following access:</li>
+    <img src={% static 'images/tutorial/6.png' %}>
+  </ol>
+  <a href="/home"><button class="btn btn-primary">Go Back To Home</button></a>
+</html>
