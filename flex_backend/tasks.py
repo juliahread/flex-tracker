@@ -21,7 +21,7 @@ textText = "You have %.2f flex dollars left for this week."
 testText = "As of %s, FlexTrackerWorks.\n\n Keep it real dude."
 
 # initialize logger
-logger = logging.getlogger(__name__)
+logger = logging.getLogger(__name__)
 
 @app.task
 def updateFlexDatabase():

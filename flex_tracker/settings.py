@@ -46,7 +46,7 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-if not DEBUG:
+if False:
     logger = logging.getLogger(__name__)
     DJANGO_LOG_LEVEL= True
     LOGGING = {
